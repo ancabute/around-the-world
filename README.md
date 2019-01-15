@@ -50,7 +50,7 @@ locations:
   location3:{“denumire”: “Viena”}
   ]
 ```
-3. **GET /location/info** - descrierea obiectivelor turistice în funcție de locația aleasă 
+2. **GET /location/info** - descrierea obiectivelor turistice în funcție de locația aleasă 
 - răspuns: 
 ```javascript
 objectives:
@@ -72,7 +72,7 @@ objectives:
     }
 ]
 ```
-4. **GET /location/hotels** - descrierea hotelurilor dintre care utilizatorul poate alege
+3. **GET /location/hotels** - descrierea hotelurilor dintre care utilizatorul poate alege
 - răspuns:
 ```javascript
 [
@@ -106,25 +106,8 @@ objectives:
          }
 ]
 ```
-5. **GET /cities** - orașele dintre care utilizatorul poate alege pentru plecare 
-- răspuns: 
-```javascript
-[
-    city1:
-    { 
-      “denumire”: “Bucuresti”
-    }, 
-    city2:
-    {
-      “denumire”: “Cluj”
-    }, 
-    city3:
-    {
-      “denumire”: “Baia Mare”
-    }
-]
-```
-6. **GET /location/flights** - lista de zboruri disponibile
+
+4. **GET /location/flights** - lista de zboruri disponibile
 - răspuns: 
 ```javascript
  [
@@ -171,40 +154,5 @@ objectives:
 ]
 
 ```
-7. **POST /location/hotel/reservation** - realizare rezervare la hotel
-8. **POST /location/flight/reservation** - rezervare bilete de zbor
-9. **POST /user/reservations** - înregistrarea rezervărilor în profilul utilizatorului
- 10. **GET /user/reservations** - afișarea istoricului rezervărilor utilizatorului
-- răspuns: 
-```javascript
- [
-    reservation1:
-    { 
-        “location”: “X”,
-        “price”: 50,
-        “date”:”01-01-2018”,
-        “tip”:”REZERVARE HOTEL”,
-        “companie”:”some hotel”
-       }, 
-    reservation2:
-    {
-      “location”: “Y”,
-        “price”: 50,
-        “date”:”02-02-2018”,
-        “tip”:”BILET AVION”,
-        “companie”:”Wizz Air”
 
-        }, 
-   reservation3:
-    {
-        “location”: “Z”,
-        “price”: 50,
-        “date”:”03-03-2018”,
-        “tip”:”REZERVARE HOTEL”,
-        “companie”:”some hotel”
-    }
-]
-
-```
- 11. **POST /check-out** - finalizare plată
 
