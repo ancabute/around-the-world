@@ -24,4 +24,187 @@ Spre deosebire de toate aceste aplicații, ”Around the world” pune la dispoz
 
 ### Interfețe aplicație 
 ------
+Începem descrierea prin a specifica faptul că ”Around The World” este o aplicație web single-page. În momentul accesării aplicaţiei, utilizatorului i se deschide pagina și poate începe o frumoasă expediție a găsirii locului perfect pentru călătoria sa. Aici are opțiunea de a naviga printre  informațiile despre ceea ce își propune să realizeze aplicația (Home), informații despre ofertele disponibile (Choose your destination) și despre modalitatea de contact.(Contact)
+
+Home presupune o descriere simplistă a rolului aplicației, menționat deja anterior. 
+<img src="images/home-page.JPG" width="450"> 
+
+Choose your destination pune la dispoziție ofertele valabile: destinații -țări/orașe, atracții turistice, hoteluri, zboruri sau perioada disponibilă. În urma selectării acestor informații, utilizatorului i se va deschide un formular prin care solicită o finalizare a procesului de rezervare. Acesta este rugat să introducă datele personale în câmpurile speciale : nume, prenume, e-mail și alegerile pentru care a optat. Formularul ajunge în baza noastră de date, urmând ca în cel mai scurt timp, utilizatorul să fie contactat pentru următorii pași.
+
+<img src="images/choose.JPG" width="450"> 
+
+Contact cuprinde date referitoare la adresa sediului nostru, telefon și e-mail.
+
+<img src="images/contact.JPG" width="450"> 
+
+### REST API - exemple de request și răspuns
+------
+
+1. **GET /cities** - afișarea destinațiilor pe care utilizatorul le poate alege
+- răspuns:
+```javascript
+locations:
+  [
+  location1:{ “denumire”: “Londra”}, 
+  location2:{“denumire”: “Paris”}, 
+  location3:{“denumire”: “Viena”}
+  ]
+```
+3. **GET /location/info** - descrierea obiectivelor turistice în funcție de locația aleasă 
+- răspuns: 
+```javascript
+objectives:
+[
+    obiectiv1:
+    { 
+      “denumire”: “London Eye”,
+      “descriere”: “o descriere”
+    }, 
+    obiectiv2:
+    {
+    “denumire”: “Big Ben”,
+    “descriere”:”o descriere”
+    }, 
+    obiectiv3:
+    {
+    “denumire”: “Madame Tussaud”,
+    “descriere:” “o descriere ”
+    }
+]
+```
+4. **GET /location/hotels** - descrierea hotelurilor dintre care utilizatorul poate alege
+- răspuns:
+```javascript
+[
+    hotel1:
+    { 
+        “denumire”: “X”,
+        “descriere”: “o descriere”,
+        “tarife”: “tarif”,
+        “facilitati”:”niste facilitati”,
+        “nr stele”: 5,
+        “adresa”:”o adresa”
+       }, 
+    hotel2:
+    {
+        “denumire”: “Y”,
+        “descriere”: “o descriere”,
+        “tarife”: “tarif”,
+        “facilitati”:”niste facilitati”,
+        “nr stele”: 5,
+        “adresa”:”o adresa”
+        }, 
+    hotel3:
+    {
+        “denumire”: “Z”,
+        “descriere”: “o descriere”,
+        “tarife”: “tarif”,
+        “facilitati”:”niste facilitati”,
+        “nr stele”: 5,
+        “adresa”:”o adresa”
+
+         }
+]
+```
+5. **GET /cities** - orașele dintre care utilizatorul poate alege pentru plecare 
+- răspuns: 
+```javascript
+[
+    city1:
+    { 
+      “denumire”: “Bucuresti”
+    }, 
+    city2:
+    {
+      “denumire”: “Cluj”
+    }, 
+    city3:
+    {
+      “denumire”: “Baia Mare”
+    }
+]
+```
+6. **GET /location/flights** - lista de zboruri disponibile
+- răspuns: 
+```javascript
+ [
+    flight1:
+    { 
+        “numar zbor”: “X”,
+        “pret”: 50,
+        “categorie”:”Economy”,
+        “destinatie”:”Londra- aeroportul pe care se aterizeaza”,
+        “compania aeriana”:”Wizz Air”,
+        “locuri”:
+          [
+            loc1: {“numar”: “34”},
+            loc2:{”numar”:”45”}
+          ]
+       }, 
+    flight2:
+    {
+      “numar zbor”: “Y”,
+      “pret”: 50,
+      “categorie”:”Economy”,
+      “destinatie”:”Londra- aeroportul pe care se aterizeaza”,
+      “compania aeriana”:”Wizz Air”,
+      “locuri”:
+          [
+              loc1: {“numar”: “37”},
+              loc2:{”numar”:”49”}
+          ]
+
+        }, 
+    flight3:
+    {
+        “numar zbor”: “Z”,
+        “pret”: 50,
+        “categorie”:”Economy”,
+        “destinatie”:”Londra- aeroportul pe care se aterizeaza”,
+        “compania aeriana”:”Wizz Air”,
+        “locuri”:
+          [
+            loc1: {“numar”: “33”},
+            loc2:{”numar”:”45”}
+          ]
+    }
+]
+
+```
+7. **POST /location/hotel/reservation** - realizare rezervare la hotel
+8. **POST /location/flight/reservation** - rezervare bilete de zbor
+9. **POST /user/reservations** - înregistrarea rezervărilor în profilul utilizatorului
+ 10. **GET /user/reservations** - afișarea istoricului rezervărilor utilizatorului
+- răspuns: 
+```javascript
+ [
+    reservation1:
+    { 
+        “location”: “X”,
+        “price”: 50,
+        “date”:”01-01-2018”,
+        “tip”:”REZERVARE HOTEL”,
+        “companie”:”some hotel”
+       }, 
+    reservation2:
+    {
+      “location”: “Y”,
+        “price”: 50,
+        “date”:”02-02-2018”,
+        “tip”:”BILET AVION”,
+        “companie”:”Wizz Air”
+
+        }, 
+   reservation3:
+    {
+        “location”: “Z”,
+        “price”: 50,
+        “date”:”03-03-2018”,
+        “tip”:”REZERVARE HOTEL”,
+        “companie”:”some hotel”
+    }
+]
+
+```
+ 11. **POST /check-out** - finalizare plată
 
